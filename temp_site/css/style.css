@@ -4,8 +4,9 @@
 * 	Designed by Stephen Hoerner
 *
 *	1) Misc.
-* 	3) Map
-* 	4) Sidebar
+* 	2) Map
+* 	3) Sidebar
+* 	4) Media Queries
 
 */
 
@@ -89,4 +90,13 @@ h2 {
 
 .slider {
 	margin: 0 30px;
+}
+
+
+/* == Media Queries == */
+
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+	.slider-label {
+		display: none;
+	}
 }

@@ -2,14 +2,65 @@
 <head>
 	<title>AquaVitae Spokane</title>
 
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
-  <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjSTAnhW7Dc4Z9Rk2ILeHJ-tD89Tn9CrQ&sensor=true"></script>
-  <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
-  <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
+  <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
+
+
+  <!--<link rel="stylesheet" href="css/jquery-ui-1.10.0.custom.min.css" type="text/css" media="screen" title="no title" charset="utf-8" />-->
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery-ui-1.10.0.custom.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="db/data.js"></script>
+
+  <script type="text/javascript">
+      $(function() {
+        $(".radius").slider({
+          min: 10,
+          max: 100,
+          value: 30
+        });
+        $(".opacity").slider({
+          min: 0,
+          max: 1,
+          step: 0.1,
+          value: 0.5
+        });
+        $("#license-heat").button();
+        $("#crime-heat").button();
+
+        var spokaneCenter = new google.maps.LatLng(47.657988,-117.46582);
+        var spokaneValley = new google.maps.LatLng(47.657988,-117.34082);
+
+        var liquorLicenseData = getLiquorLicenseData();
+        var taxiData = getTempData();
+
+        var gradient_blue = getGradientBlue();
+        var gradient_orange = getGradientOrange();
+
+        var mapOptions = {
+          center: spokaneValley,
+          zoom: 11,
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true
+        };
+
+        var map = new google.maps.Map(document.getElementById("mappy"), mapOptions);
+        var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: liquorLicenseData });
+        var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: taxiData });
+
+        heatmapCrimes.setOptions({ gradient: gradient_orange, radius: 30, opacity: 0.8 });
+        heatmapLicense.setOptions({ gradient: gradient_blue, radius: 30, opacity: 0.8 });
+
+        heatmapLicense.setMap(map);
+        heatmapCrimes.setMap(map);
+
+      });
+      </script>
 </head>
 
 <body onload="initialize()">
@@ -42,37 +93,7 @@
         radius
       </label>
   </div>
-
   <div id="mappy"></div>
 
-  <!-- JS wizardry -->
-  <script type="text/javascript">
-    $(function() {
-      $(".radius").slider({
-        min: 10,
-        max: 100,
-        value: 30
-      });
-      $(".opacity").slider({
-        min: 0,
-        max: 1,
-        step: 0.1,
-        value: 0.5
-      });
-       $("#license-heat").button();
-      $("#crime-heat").button();
-    });
-
-    function initialize() {
-      var mapOptions = {
-        center: new google.maps.LatLng(47.6889, -117.44),
-        zoom: 12,
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        disableDefaultUI: true,
-      };
-      var map = new google.maps.Map(document.getElementById("mappy"),
-          mapOptions);
-    }
-  </script>
 </body>
 </html>
