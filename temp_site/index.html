@@ -5,7 +5,7 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/png" href="favicon.png" />
 
   <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
@@ -13,16 +13,21 @@
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-ui-1.10.0.custom.min.js"></script>
-  <script type="text/javascript" charset="utf-8" src="db/data.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="db/WeighedCrime.js"></script>
+  <script type="text/javascript" charset="utf-8" src="db/WeighedPoints.js"></script>
 
   <script type="text/javascript">
       $(function() {
+
+        // set up the sliders
         $(".radius").slider({
           min: 10,
           max: 80,
           step: 5,
           value: 30
         });
+
         $(".opacity").slider({
           min: 0.1,
           max: 1,
@@ -30,14 +35,41 @@
           value: 0.8
         });
 
+        // prepare the buttons
         $("#license-heat").button();
         $("#crime-heat").button();
 
+        // it's map time
         var spokaneCenter = new google.maps.LatLng(47.657988,-117.46582);
         var spokaneValley = new google.maps.LatLng(47.657988,-117.34082);
 
-        var liquorLicenseData = getLiquorLicenseData();
-        var taxiData = getTempData();
+
+
+        function getGradientBlue() {
+            return [
+                'rgba(0, 255, 255, 0)',
+                'rgba(0,0,136,1)',
+                'rgba(34,35,157,1)',
+                'rgba(69,72,179,1)',
+                'rgba(98,103,197,1)',
+                'rgba(126,132,215,1)',
+                'rgba(158,165,235,1)',
+                'rgba(191,200,255,1)',
+            ];
+        }
+
+        function getGradientOrange() {
+            return [
+                'rgba(0, 255, 255, 0)',
+                'rgba(242,129,0,1)',
+                'rgba(245,148,33,1)',
+                'rgba(247,166,66,1)',
+                'rgba(249,186,102,1)',
+                'rgba(251,205,136,1)',
+                'rgba(253,225,171,1)',
+                'rgba(255,242,201,1)',
+            ];
+        }
 
         var gradient_blue = getGradientBlue();
         var gradient_orange = getGradientOrange();
@@ -50,8 +82,8 @@
         };
 
         var map = new google.maps.Map(document.getElementById("mappy"), mapOptions);
-        var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: liquorLicenseData });
-        var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: taxiData });
+        var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: BoozeMap });
+        var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: CrimeMap });
 
         heatmapCrimes.setOptions({ gradient: gradient_orange, radius: 30, opacity: 0.8 });
         heatmapLicense.setOptions({ gradient: gradient_blue, radius: 30, opacity: 0.8 });
@@ -59,13 +91,16 @@
         heatmapLicense.setMap(map);
         heatmapCrimes.setMap(map);
 
-
-        $("#cp").click(function() {
+        // this toggles a heatmap
+        $("#lp").click(function() {
           heatmapLicense.setMap(heatmapLicense.getMap() ? null : map);
         });
+        $("#cp").click(function() {
+          heatmapCrimes.setMap(heatmapCrimes.getMap() ? null : map);
+        });
 
+        // function to be called when the sliders change values
         function sliding() {
-          
           var val = $(this).slider("value");
 
           switch ($(this).attr("id"))
@@ -76,6 +111,14 @@
 
             case 'license-radius':
             heatmapLicense.setOptions({ radius: val });
+            break;
+
+            case 'crime-opacity':
+            heatmapCrimes.setOptions({ opacity: val });
+            break;
+
+            case 'crime-radius':
+            heatmapCrimes.setOptions({ radius: val });
             break;
           }
         }
@@ -91,10 +134,9 @@
     
     <h2>filters</h2>
 
-
     <h3>licenses</h3>
       <input type="checkbox" id="license-heat" />
-      <label for="license-heat" class="heat-label">heatmap</label>
+      <label for="license-heat" class="heat-label" id="lp">heatmap</label>
 
       <label class="slider-label">
         <div class="slider opacity" id="license-opacity"></div>
@@ -104,8 +146,7 @@
         <div class="slider radius" id="license-radius"></div>
         radius
       </label>
-
-    <!-- 
+    
       <h3>crimes</h3>
       <input type="checkbox" id="crime-heat" />
       <label for="crime-heat" class="heat-label" id="cp">heatmap</label>
@@ -118,7 +159,6 @@
         <div class="slider radius" id="crime-radius"></div>
         radius
       </label>
-    -->
   </div>
   <div id="mappy"></div>
 
