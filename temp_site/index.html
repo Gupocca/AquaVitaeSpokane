@@ -5,27 +5,18 @@
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
-  
-  <!-- MINIFIED -->
-  <link type="text/css" rel="stylesheet" href="min/b=aquavitaespokane/php/css&amp;f=smoothness/jquery-ui-1.10.0.custom.min.css,fonts.css,style.css" />
-  <script type="text/javascript" src="min/b=aquavitaespokane/php&amp;f=js/jquery-1.9.0.min.js,js/jquery-ui-1.10.0.custom.min.js,db/WeighedCrime.js,db/WeighedBooze.js"></script>
-
-  <!--
   <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-ui-1.10.0.custom.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="db/WeighedCrime.js"></script>
   <script type="text/javascript" charset="utf-8" src="db/WeighedBooze.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
 
-  link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>
+  <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
-  -->
 
   <script type="text/javascript">
       $(function() {
-
-        
 
         // set up the sliders
         $(".radius").slider({
@@ -50,10 +41,7 @@
         var spokaneCenter = new google.maps.LatLng(47.657988,-117.46582);
         var spokaneValley = new google.maps.LatLng(47.657988,-117.34082);
 
-
-
-        function getGradientBlue() {
-            return [
+        var gradient_blue = [
                 'rgba(0, 255, 255, 0)',
                 'rgba(0,0,136,1)',
                 'rgba(34,35,157,1)',
@@ -63,10 +51,8 @@
                 'rgba(158,165,235,1)',
                 'rgba(191,200,255,1)',
             ];
-        }
 
-        function getGradientOrange() {
-            return [
+        var gradient_orange = [
                 'rgba(0, 255, 255, 0)',
                 'rgba(242,129,0,1)',
                 'rgba(245,148,33,1)',
@@ -76,10 +62,6 @@
                 'rgba(253,225,171,1)',
                 'rgba(255,242,201,1)',
             ];
-        }
-
-        var gradient_blue = getGradientBlue();
-        var gradient_orange = getGradientOrange();
 
         var mapOptions = {
           center: spokaneValley,
@@ -130,17 +112,13 @@
           }
         }
 
-        /*google.maps.event.addListener(map, 'zoom_changed', function() {
-          alert(map.getZoom());
-        });*/
-
         $(".slider").slider({ slide: sliding, change: sliding });
-
-      });
+        $("#logo").mouseover(function () { $(this).addClass('hidden'); } );
+    });
       </script>
 </head>
 
-<body onload="initialize()">
+<body>
   <div id="side-bar">
     
     <h2>filters</h2>
@@ -172,6 +150,8 @@
       </label>
   </div>
   <div id="mappy"></div>
+
+  <div id="logo"></div>
 
 </body>
 </html>
