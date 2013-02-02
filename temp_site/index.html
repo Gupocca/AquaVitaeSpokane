@@ -3,6 +3,7 @@
 	<title>AquaVitae Spokane</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
 	<script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjSTAnhW7Dc4Z9Rk2ILeHJ-tD89Tn9CrQ&sensor=true">
@@ -10,8 +11,8 @@
     <script type="text/javascript">
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
+          center: new google.maps.LatLng(47.6889, -117.44),
+          zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP,
           disableDefaultUI: true,
         };
@@ -20,9 +21,26 @@
       }
     </script>
 </head>
+
 <body onload="initialize()">
   <div id="top-bar"><input type="text" id="search" placeholder="search" /></div>
-  <div id="side-bar"></div>
+  <div id="side-bar">
+    <nav><a href="#" selected>results</a><a href="#">filters</a></nav>
+    <ul>
+      <li>
+        <h3>Bob's Buzz</h3>
+        <p>42 Stack Overflow Ave.</p>
+      </li>
+      <li>
+        <h3>Bob's Buzz</h3>
+        <p>42 Stack Overflow Ave.</p>
+      </li>
+      <li>
+        <h3>Bob's Buzz</h3>
+        <p>42 Stack Overflow Ave.</p>
+      </li>
+    </ul>
+  </div>
   <div id="mappy">
   </div>
 </body>
