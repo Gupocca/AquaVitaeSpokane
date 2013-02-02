@@ -6,7 +6,7 @@
 *	1) Misc.
 * 	2) Map
 * 	3) Sidebar
-* 	4) Media Queries
+* 	4) Logo
 
 */
 
@@ -94,13 +94,7 @@ h2 {
 }
 
 
-/* == Media Queries == */
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-	.slider-label {
-		display: none;
-	}
-}
+/* == Logo == */
 
 #logo {
 	position: absolute;
