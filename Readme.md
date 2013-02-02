@@ -16,7 +16,7 @@ City Impact
 -----------
 
 * Improve the distribution for new licenses
-* Prevent the over distribution of licenses in an area
+* Prevent the over distribution of licenses in an area based on licenses/area and licenses/population
 * Improve patrols of problem areas for DUI/underage drinking/disorderly conduct
 * Determine value of liquor licenses based on utilization
 
@@ -26,3 +26,11 @@ Data Sources
 Liquor Data: https://data.wa.gov/Economics/Washington-Liquor-Retailers/qkyd-8yuq
 
 Crime Data: http://www.spokanecity.org/services/gis/data
+
+Additional Data Needed
+----------------------
+
+* Anonymous DUI Arrests Records (locations, time of data)
+* Traffic Ticket Metrics
+* Accident Reports
+* Neighborhood Populations
