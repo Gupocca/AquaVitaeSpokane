@@ -4,7 +4,6 @@
 * 	Designed by Stephen Hoerner
 *
 *	1) Misc.
-* 	2) Search Bar
 * 	3) Map
 * 	4) Sidebar
 
@@ -35,49 +34,11 @@ h2 {
 }
 
 
-/* === Search Bar === */
-#top-bar {
-	height: 44px;
-	margin-left: 220px;
-	padding: 16px 0;
-	position: relative;
-
-	z-index: 81;
-	opacity: 0.9;
-	background: #f4f4f4;
-
-	-moz-box-shadow:	0 5px 10px rgba(0,0,0,0.2);
-	-webkit-box-shadow:	0 5px 10px rgba(0,0,0,0.2);
-	box-shadow:			0 5px 10px rgba(0,0,0,0.2);
-}
-
-input#search {
-	font-family: 'Open Sans';
-	font-size: 24px;
-	font-weight: 300;
-
-	width: 100%;
-	height: 44px;
-	padding: 10px;
-	padding-left: 30px;
-	position: absolute;
-
-	border: none 0;
-	background: none;
-}
-
-input:focus {
-	outline: none;
-	color: #A83200;
-}
-
-
 /* === Map === */
 #mappy {
 	float: left;
 	height: 100%;
 	width: 100%;
-	margin-top: -76px;
 	margin-left: -200px;
 	position: relative;
 
@@ -92,7 +53,6 @@ input:focus {
 	float: left;
 	height: 100%;
 	width: 200px;
-	margin-top: -76px;
 	position: relative;
 
 	z-index: 80;
