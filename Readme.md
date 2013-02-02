@@ -31,6 +31,6 @@ Additional Data Needed
 ----------------------
 
 * Anonymous DUI Arrests Records (locations, time of data)
-* Traffic Ticket Metrics
+* Traffic Ticket Metrics (Speeding, Stop light cameras, etc)
 * Accident Reports
 * Neighborhood Populations
