@@ -1,7 +1,7 @@
 Aqua Vitae Spokane
 ==================
 
-A Google Maps view of the liquor license distribution in Spokane.
+A Google Maps driven view of the liquor license distribution in Spokane.
 Currently hosted at: https://aquavitaespokane-gupocca.rhcloud.com
 
 Goals
@@ -9,15 +9,15 @@ Goals
 
 * Show the density of liquor licenses in Spokane
 * Filter the licenses by type
-* Filter the licenses by distance from a given location
+* Filter the licenses by their distance from a given location
 * Provide metrics to measure DUI/Underage drinking/disorderly conduct arrests for areas
 
 City Impact
 -----------
 
-* Improve the distribution for new licenses
-* Prevent the over distribution of licenses in an area based on licenses/area and licenses/population
-* Improve patrols of problem areas for DUI/underage drinking/disorderly conduct
+* Improve the distribution of new liquor licenses
+* Prevent the over-distribution of licenses in an area based on licenses/area and licenses/population
+* Improve patrols in problem areas for DUIs, underage drinking, & disorderly conduct
 * Determine value of liquor licenses based on utilization
 
 Data Sources
@@ -31,6 +31,6 @@ Additional Data Needed
 ----------------------
 
 * Anonymous DUI Arrests Records (locations, time of data)
-* Traffic Ticket Metrics (Speeding, Stop light cameras, etc)
+* Traffic Ticket Metrics (speeding, stop light cameras, etc.)
 * Accident Reports
 * Neighborhood Populations
