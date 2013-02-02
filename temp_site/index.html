@@ -12,20 +12,18 @@
         var mapOptions = {
           center: new google.maps.LatLng(-34.397, 150.644),
           zoom: 8,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
+          mapTypeId: google.maps.MapTypeId.ROADMAP,
+          disableDefaultUI: true,
         };
-        var map = new google.maps.Map(document.getElementById("maaappy"),
+        var map = new google.maps.Map(document.getElementById("mappy"),
             mapOptions);
       }
     </script>
 </head>
 <body onload="initialize()">
-  <div id="emptiness"></div>
   <div id="top-bar"><input type="text" id="search" placeholder="search" /></div>
   <div id="side-bar"></div>
   <div id="mappy">
-    <div id="inner-map">
-    </div>
   </div>
 </body>
 </html>
