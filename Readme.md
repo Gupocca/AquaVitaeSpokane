@@ -1,7 +1,7 @@
 Aqua Vitae Spokane
 ==================
 
-A google maps view of the liquor license distribution in Spokane.
+A Google Maps view of the liquor license distribution in Spokane.
 Currently hosted at: https://aquavitaespokane-gupocca.rhcloud.com
 
 Goals
