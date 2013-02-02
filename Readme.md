@@ -19,3 +19,9 @@ City Impact
 * Prevent the over distribution of licenses in an area
 * Improve patrols of problem areas for DUI/underage drinking/disorderly conduct
 * Determine value of liquor licenses based on utilization
+
+Data Sources
+------------
+
+Liquor Data: 
+Crime Data: http://www.spokanecity.org/services/gis/data/
