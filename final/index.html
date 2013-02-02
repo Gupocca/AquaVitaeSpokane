@@ -115,7 +115,7 @@
 
         // slider and logo events
         $(".slider").slider({ slide: sliding, change: sliding });
-        $("#logo").mouseover(function () { $(this).addClass('hidden'); } );
+        $("#logo").hover(function () { $(this).toggleClass('hidden'); } );
     });
       </script>
 </head>
