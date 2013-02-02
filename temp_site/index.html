@@ -1,0 +1,31 @@
+<html>
+<head>
+	<title>AquaVitae Spokane</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+
+	<script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjSTAnhW7Dc4Z9Rk2ILeHJ-tD89Tn9CrQ&sensor=true">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("maaappy"),
+            mapOptions);
+      }
+    </script>
+</head>
+<body onload="initialize()">
+  <div id="emptiness"></div>
+  <div id="top-bar"><input type="text" id="search" placeholder="search" /></div>
+  <div id="side-bar"></div>
+  <div id="mappy">
+    <div id="inner-map">
+    </div>
+  </div>
+</body>
+</html>
