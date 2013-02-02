@@ -1,37 +1,82 @@
 <html>
 <head>
 	<title>AquaVitae Spokane</title>
+
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300' rel='stylesheet' type='text/css'>
+  <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
   <link rel="icon" type="image/png" href="favicon.png" />
 
-	<script type="text/javascript"
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjSTAnhW7Dc4Z9Rk2ILeHJ-tD89Tn9CrQ&sensor=true">
-    </script>
-    <script type="text/javascript">
-      function initialize() {
-        var mapOptions = {
-          center: new google.maps.LatLng(47.6889, -117.44),
-          zoom: 12,
-          mapTypeId: google.maps.MapTypeId.ROADMAP,
-          disableDefaultUI: true,
-        };
-        var map = new google.maps.Map(document.getElementById("mappy"),
-            mapOptions);
-      }
-    </script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjSTAnhW7Dc4Z9Rk2ILeHJ-tD89Tn9CrQ&sensor=true"></script>
+  <script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+  <script type="text/javascript" src="js/jquery-ui-1.10.0.custom.min.js"></script>
 </head>
 
 <body onload="initialize()">
-  <div id="top-bar"><input type="text" id="search" placeholder="search" /></div>
+  <div id="top-bar">
+    <input type="text" id="search" placeholder="search" />
+  </div>
+
   <div id="side-bar">
     <h2>filters</h2>
-      <label class="checkbox">
-        <input type="checkbox" name="crime-heat" value="crime-heat">
-        crime heatmap
+
+    <h3>licenses</h3>
+      <input type="checkbox" id="license-heat" />
+      <label for="license-heat" class="heat-label">heatmap</label>
+
+      <label class="slider-label">
+        <div class="slider opacity" id="license-opacity"></div>
+        opacity
+      </label>
+      <label class="slider-label">
+        <div class="slider radius" id="license-radius"></div>
+        radius
+      </label>
+
+    <h3>crimes</h3>
+      <input type="checkbox" id="crime-heat" />
+      <label for="crime-heat" class="heat-label">heatmap</label>
+
+      <label class="slider-label">
+        <div class="slider opacity" id="crime-opacity"></div>
+        opacity
+      </label>
+      <label class="slider-label">
+        <div class="slider radius" id="crime-radius"></div>
+        radius
       </label>
   </div>
-  <div id="mappy">
-  </div>
+
+  <div id="mappy"></div>
+
+  <!-- JS wizardry -->
+  <script type="text/javascript">
+    $(function() {
+      $(".radius").slider({
+        min: 10,
+        max: 100,
+        value: 30
+      });
+      $(".opacity").slider({
+        min: 0,
+        max: 1,
+        step: 0.1,
+        value: 0.5
+      });
+       $("#license-heat").button();
+      $("#crime-heat").button();
+    });
+
+    function initialize() {
+      var mapOptions = {
+        center: new google.maps.LatLng(47.6889, -117.44),
+        zoom: 12,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
+        disableDefaultUI: true,
+      };
+      var map = new google.maps.Map(document.getElementById("mappy"),
+          mapOptions);
+    }
+  </script>
 </body>
 </html>
