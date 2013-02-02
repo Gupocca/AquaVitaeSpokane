@@ -23,7 +23,7 @@
           min: 10,
           max: 80,
           step: 5,
-          value: 45
+          value: 55
         });
 
         $(".opacity").slider({
@@ -74,8 +74,8 @@
         var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: BoozeMap, dissipating: true });
         var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: CrimeMap, dissipating: true });
 
-        heatmapCrimes.setOptions({ gradient: gradient_orange, radius: 45, opacity: 0.7 });
-        heatmapLicense.setOptions({ gradient: gradient_blue, radius: 45, opacity: 0.7 });
+        heatmapCrimes.setOptions({ gradient: gradient_orange, radius: 55, opacity: 0.7 });
+        heatmapLicense.setOptions({ gradient: gradient_blue, radius: 55, opacity: 0.7 });
 
         heatmapLicense.setMap(map);
         heatmapCrimes.setMap(map);
