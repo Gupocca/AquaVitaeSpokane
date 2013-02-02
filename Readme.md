@@ -24,4 +24,5 @@ Data Sources
 ------------
 
 Liquor Data: https://data.wa.gov/Economics/Washington-Liquor-Retailers/qkyd-8yuq
+
 Crime Data: http://www.spokanecity.org/services/gis/data
