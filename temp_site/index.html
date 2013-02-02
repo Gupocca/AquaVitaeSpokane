@@ -10,8 +10,6 @@
 
   <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
 
-
-  <!--<link rel="stylesheet" href="css/jquery-ui-1.10.0.custom.min.css" type="text/css" media="screen" title="no title" charset="utf-8" />-->
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-ui-1.10.0.custom.min.js"></script>
@@ -21,15 +19,17 @@
       $(function() {
         $(".radius").slider({
           min: 10,
-          max: 100,
+          max: 80,
+          step: 5,
           value: 30
         });
         $(".opacity").slider({
-          min: 0,
+          min: 0.1,
           max: 1,
           step: 0.1,
-          value: 0.5
+          value: 0.8
         });
+
         $("#license-heat").button();
         $("#crime-heat").button();
 
@@ -59,14 +59,39 @@
         heatmapLicense.setMap(map);
         heatmapCrimes.setMap(map);
 
+
+        $("#cp").click(function() {
+          heatmapLicense.setMap(heatmapLicense.getMap() ? null : map);
+        });
+
+        function sliding() {
+          
+          var val = $(this).slider("value");
+
+          switch ($(this).attr("id"))
+          {
+            case 'crime-opacity':
+            heatmapLicense.setOptions({ opacity: val });
+            break;
+
+            case 'crime-radius':
+            heatmapLicense.setOptions({ radius: val });
+            break;
+          }
+        }
+
+        $(".slider").slider({ slide: sliding, change: sliding });
+
       });
       </script>
 </head>
 
 <body onload="initialize()">
   <div id="side-bar">
+    
     <h2>filters</h2>
 
+<!--
     <h3>licenses</h3>
       <input type="checkbox" id="license-heat" />
       <label for="license-heat" class="heat-label">heatmap</label>
@@ -79,10 +104,10 @@
         <div class="slider radius" id="license-radius"></div>
         radius
       </label>
-
+-->
     <h3>crimes</h3>
       <input type="checkbox" id="crime-heat" />
-      <label for="crime-heat" class="heat-label">heatmap</label>
+      <label for="crime-heat" class="heat-label" id="cp">heatmap</label>
 
       <label class="slider-label">
         <div class="slider opacity" id="crime-opacity"></div>
