@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization">
+    </script>
+    <script type="text/javascript">
+        function initialize() {
+            
+            var heatMapData = [
+              {location: new google.maps.LatLng(37.782, -122.447), weight: 0.5},
+              {location: new google.maps.LatLng(37.782, -122.443), weight: 2},
+              {location: new google.maps.LatLng(37.782, -122.441), weight: 3},
+              {location: new google.maps.LatLng(37.782, -122.439), weight: 2},
+              {location: new google.maps.LatLng(37.782, -122.435), weight: 0.5},
+              {location: new google.maps.LatLng(37.785, -122.447), weight: 3},
+              {location: new google.maps.LatLng(37.785, -122.445), weight: 2},
+              {location: new google.maps.LatLng(37.785, -122.441), weight: 0.5},
+              {location: new google.maps.LatLng(37.785, -122.437), weight: 2},
+              {location: new google.maps.LatLng(37.785, -122.435), weight: 3}
+            ];
+             
+            var spokaneCenter = new google.maps.LatLng(47.657988,-117.46582);
+            var spokaneValley = new google.maps.LatLng(47.657988,-117.34082);
+            var sanFrancisco = new google.maps.LatLng(37.774546, -122.433523);
+
+            var mapOptions = {
+                center: sanFrancisco,
+                zoom: 12,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+            var heatmap = new google.maps.visualization.HeatmapLayer({
+              data: heatMapData
+            });
+            heatmap.setMap(map);
+      }
+    </script>
+  </head>
+  <body onload="initialize()">
+    <div id="map_canvas" style="width:100%; height:100%"></div>
+  </body>
+</html>
