@@ -70,11 +70,11 @@
 
           switch ($(this).attr("id"))
           {
-            case 'crime-opacity':
+            case 'license-opacity':
             heatmapLicense.setOptions({ opacity: val });
             break;
 
-            case 'crime-radius':
+            case 'license-radius':
             heatmapLicense.setOptions({ radius: val });
             break;
           }
@@ -91,7 +91,7 @@
     
     <h2>filters</h2>
 
-<!--
+
     <h3>licenses</h3>
       <input type="checkbox" id="license-heat" />
       <label for="license-heat" class="heat-label">heatmap</label>
@@ -104,8 +104,9 @@
         <div class="slider radius" id="license-radius"></div>
         radius
       </label>
--->
-    <h3>crimes</h3>
+
+    <!-- 
+      <h3>crimes</h3>
       <input type="checkbox" id="crime-heat" />
       <label for="crime-heat" class="heat-label" id="cp">heatmap</label>
 
@@ -117,6 +118,7 @@
         <div class="slider radius" id="crime-radius"></div>
         radius
       </label>
+    -->
   </div>
   <div id="mappy"></div>
 
