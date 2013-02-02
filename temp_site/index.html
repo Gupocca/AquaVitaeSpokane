@@ -3,22 +3,29 @@
 	<title>AquaVitae Spokane</title>
 
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
   <link rel="icon" type="image/png" href="favicon.png" />
 
-  <link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>  
-
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBqOmuo3IvBpoAcfmIBRTiV49-JYBnvtsY&sensor=false&libraries=visualization"></script>
+  
+  <!-- MINIFIED -->
+  <link type="text/css" rel="stylesheet" href="min/b=aquavitaespokane/php/css&amp;f=smoothness/jquery-ui-1.10.0.custom.min.css,fonts.css,style.css" />
+  <script type="text/javascript" src="min/b=aquavitaespokane/php&amp;f=js/jquery-1.9.0.min.js,js/jquery-ui-1.10.0.custom.min.js,db/WeighedCrime.js,db/WeighedBooze.js"></script>
+
+  <!--
   <script type="text/javascript" charset="utf-8" src="js/jquery-1.9.0.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="js/jquery-ui-1.10.0.custom.min.js"></script>
-
   <script type="text/javascript" charset="utf-8" src="db/WeighedCrime.js"></script>
-  <script type="text/javascript" charset="utf-8" src="db/WeighedPoints.js"></script>
+  <script type="text/javascript" charset="utf-8" src="db/WeighedBooze.js"></script>
+
+  link href='css/smoothness/jquery-ui-1.10.0.custom.min.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+  -->
 
   <script type="text/javascript">
       $(function() {
+
+        
 
         // set up the sliders
         $(".radius").slider({
@@ -82,8 +89,8 @@
         };
 
         var map = new google.maps.Map(document.getElementById("mappy"), mapOptions);
-        var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: BoozeMap });
-        var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: CrimeMap });
+        var heatmapLicense = new google.maps.visualization.HeatmapLayer({ data: BoozeMap, dissipating: true });
+        var heatmapCrimes = new google.maps.visualization.HeatmapLayer({ data: CrimeMap, dissipating: true });
 
         heatmapCrimes.setOptions({ gradient: gradient_orange, radius: 30, opacity: 0.8 });
         heatmapLicense.setOptions({ gradient: gradient_blue, radius: 30, opacity: 0.8 });
@@ -122,6 +129,10 @@
             break;
           }
         }
+
+        /*google.maps.event.addListener(map, 'zoom_changed', function() {
+          alert(map.getZoom());
+        });*/
 
         $(".slider").slider({ slide: sliding, change: sliding });
 
